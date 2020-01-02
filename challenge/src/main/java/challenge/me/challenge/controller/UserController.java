@@ -2,37 +2,31 @@ package challenge.me.challenge.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import challenge.me.challenge.User2;
 import challenge.me.challenge.Repository.UserRepository;
 import challenge.me.challenge.model.User;
 
-import java.util.Arrays;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-    
-//	@RequestMapping("/users")
-//	public List<User2> getUsers (){
-//		User2 user1 = new User2("Ahmed", "zakiahmed91", "1", "zakiahmed91@gmail.com", "password");
-//		return Arrays.asList(user1);
-//	}
-//	
-//	@RequestMapping("/user")
-//	public User2 getUser (){
-//		User2 user1 = new User2("Ahmed", "zakiahmed91", "1", "zakiahmed91@gmail.com", "password");
-//		return user1;
-//	}
 	
     @GetMapping("/users")
-    public List < User > getInstructors() {
+    public List < User > getUsers() {
         return userRepository.findAll();
+    }
+    
+    @PostMapping("/user")
+    public User createUser(@Valid @RequestBody User user) {
+        return userRepository.save(user);
     }
 }

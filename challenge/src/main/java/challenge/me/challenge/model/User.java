@@ -1,20 +1,11 @@
 package challenge.me.challenge.model;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
 @Table(name = "user")
@@ -47,6 +38,10 @@ public class User {
 
 	}
 
+	public User(int userId) {
+		this.id = userId;
+	}
+	
 	public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
