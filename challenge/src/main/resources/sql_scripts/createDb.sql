@@ -27,12 +27,11 @@ CREATE TABLE user_relationship_type(
 CREATE TABLE user_relationship(
 	first_user_id INT
 	, second_user_id INT
-	, relationship_type INT
+	, relationship_type ENUM ('pending_first_second', 'pending_second_first', 'friends', 'block_first_second', 'block_second_first', 'block_both')
 	, PRIMARY KEY(first_user_id, second_user_id)
 	, CONSTRAINT user_id_order CHECK (first_user_id < second_user_id)
 	, FOREIGN KEY (first_user_id) REFERENCES user(user_id)
 	, FOREIGN KEY (second_user_id) REFERENCES user(user_id)
-	, FOREIGN KEY (relationship_type) REFERENCES user_relationship_type(relationship_type_id)
 );
 
 

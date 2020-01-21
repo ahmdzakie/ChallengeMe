@@ -2,14 +2,14 @@ package challenge.me.challenge.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum Type {
+public enum ChallengeType {
 
-    Cyclic("cyclic"),
-    Onetime("one_time");
+    cyclic("cyclic"),
+    one_time("one_time");
 
     private String jsonValue;
 
-    private Type(final String json) {
+    private ChallengeType(final String json) {
         this.jsonValue = json;
     }
 
